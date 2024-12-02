@@ -120,16 +120,16 @@ CREATE TABLE match_schedule (
 
 
 INSERT INTO user (user_ID, full_name, email, username, password, profile_settings) VALUES
-(10000001, 'Yatin Marpu', 'ymarpu@gmail.com', 'ymarpu', 'hashed_pw1', 'Notifications: On'),
-(10000002, 'Hailee Yun', 'hyun@gmaill.com', 'hyun', 'hashed_pw2', 'Notifications: On'),
-(10000003, 'Jonas Dao', 'jdao@gmail.com', 'jdao', 'hashed_pw3', 'Notifications: On'),
-(10000004, 'Salim Arfaoui', 'sarfaoui@gmail.com', 'sarfouai', 'hashed_pw4', 'Notifications: On'),
-(10000005, 'Dani Smolka', 'dsmolka@gmail.com', 'dsmolka', 'hashed_pw5', 'Notifications: On'),
-(10000006, 'Ryan Wong', 'rwong@gmail.com', 'rwong', 'hashed_pw6', 'Notifications: On'),
-(10000007, 'Farabi Azad', 'fazad@gmail.com', 'fazad', 'hashed_pw7', 'Notifications: On'),
-(10000008, 'Lorrie Savage', 'lsavage@gmail.com', 'lsavage', 'hashed_pw8', 'Notifications: On'),
-(10000009, 'Siam Huda', 'shuda@gmail.com', 'shuda', 'hashed_pw9', 'Notifications: On'),
-(10000010, 'Haesun Uhm', 'huhm@gmail.com', 'huhm', 'hashed_pw10', 'Notifications: On');
+(10000001, 'Yatin Marpu', 'ymarpu@gmail.com', 'ymarpu', 'hashed_pw1', 'Notifications: On', False),
+(10000002, 'Hailee Yun', 'hyun@gmaill.com', 'hyun', 'hashed_pw2', 'Notifications: On', True),
+(10000003, 'Jonas Dao', 'jdao@gmail.com', 'jdao', 'hashed_pw3', 'Notifications: On', False),
+(10000004, 'Salim Arfaoui', 'sarfaoui@gmail.com', 'sarfouai', 'hashed_pw4', 'Notifications: On', False),
+(10000005, 'Dani Smolka', 'dsmolka@gmail.com', 'dsmolka', 'hashed_pw5', 'Notifications: On', False),
+(10000006, 'Ryan Wong', 'rwong@gmail.com', 'rwong', 'hashed_pw6', 'Notifications: On', False),
+(10000007, 'Farabi Azad', 'fazad@gmail.com', 'fazad', 'hashed_pw7', 'Notifications: On', False),
+(10000008, 'Lorrie Savage', 'lsavage@gmail.com', 'lsavage', 'hashed_pw8', 'Notifications: On', False),
+(10000009, 'Siam Huda', 'shuda@gmail.com', 'shuda', 'hashed_pw9', 'Notifications: On', False),
+(10000010, 'Haesun Uhm', 'huhm@gmail.com', 'huhm', 'hashed_pw10', 'Notifications: On', False);
 
 INSERT INTO player (player_ID, full_name, sport, position, team, fantasy_points_scored, availability_status) VALUES
 (20000001, 'Justin Jefferson', 'FTB', 'WR', 'Vikings', 300.5, 'A'),
