@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('home') }}">Fantasy League</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <!-- Welcome Message -->
+        <div class="text-center mb-4">
+            <h1 class="display-4">Welcome to Your Fantasy League!</h1>
+            <p class="lead">Manage your leagues, track your teams, and enjoy the game!</p>
+        </div>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Your Leagues -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Your Leagues</h2>
+            </div>
+            <div class="card-body">
+                {% if leagues %}
+                    <ul class="list-group">
+                        {% for league in leagues %}
+                            <li class="list-group-item">
+                                <a href="{{ url_for('league_page', league_id=league.league_ID) }}" class="text-decoration-none">
+                                    {{ league.league_name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-muted">You are not part of any leagues.</p>
+                {% endif %}
+            </div>
+        </div>
+        <br/>
+        <!-- Admin Button (Visible only if user is an admin) -->
+        {% if is_admin %}
+            <div class="text-center mb-4">
+                <a href="{{ url_for('edit_database') }}" class="btn btn-primary">Edit Database</a>
+            </div>
+        {% endif %}
+
+        <!-- Create League Button -->
+        <div class="text-center mb-4">
+            <form action="{{ url_for('create_league') }}" method="post">
+                <button type="submit" class="btn btn-success">Create League</button>
+            </form>
+        </div>
+
+        <!-- Centered "or" text -->
+        <div class="d-flex justify-content-center mb-4">
+            <h3>or</h3>
+        </div>
+
+        <!-- Join League Form -->
+        <div class="text-center mb-4">
+            <form action="{{ url_for('join_league') }}" method="post">
+                <div class="mb-3">
+                    <label for="league_id" class="form-label">Enter League ID</label>
+                    <input type="text" class="form-control w-50 mx-auto" id="league_id" name="league_id" required> <!-- narrower input -->
+                </div>
+                <button type="submit" class="btn btn-primary">Join League</button>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
